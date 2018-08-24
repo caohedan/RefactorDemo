@@ -27,7 +27,8 @@ public class Rental {
         return frequentRenterPoints;
     }
 
-    double getThisAmount(double thisAmount) {
+    double getThisAmount() {
+        double thisAmount = 0;
         switch (getMovie().getPriceCode()){
             case Movie.REGULAR:
                 thisAmount += 2;
