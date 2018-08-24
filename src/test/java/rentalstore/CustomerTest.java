@@ -101,7 +101,10 @@ public class CustomerTest {
     @Test
     public void should_return_correct_html_statement_given_customer_has_rent_one_child_movie_for_4_day() {
         Movie childrenMovie = new Movie("Titanic", 2);
+        Movie anotherChildrenMovie = new Movie("Roman Holiday", 2);
         Rental fourDayRental = new Rental(childrenMovie, 4);
+        Rental anotherFourDayRental = new Rental(anotherChildrenMovie, 4);
+        customer.addRental(anotherFourDayRental);
         customer.addRental(fourDayRental);
 
         String statement = customer.htmlStatement();
@@ -110,7 +113,7 @@ public class CustomerTest {
         assertEquals("<H1>Rentals for <EM>Jerry</EM></H1><P>\n" +
                 "Roman Holiday: 3.0<BR>\n" +
                 "Titanic: 3.0<BR>\n" +
-                "<P>You owe<EM>3.0</EM><P>\n" +
+                "<P>You owe<EM>6.0</EM><P>\n" +
                 "On this rental you earned <EM>2</EM> frequent renter points<P>",statement);
     }
 
