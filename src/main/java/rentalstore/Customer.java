@@ -20,30 +20,11 @@ public class Customer {
     }
 
     public String statement(){
-        Enumeration rentals = this.rentals.elements();
-        String result = "Rental Record for " + getName() + "\n";
-        while(rentals.hasMoreElements()){
-            Rental each = (Rental) rentals.nextElement();
-            result += "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(each.getThisAmount()) + "\n";
-        }
-        //add footer lines
-        result += "Amount owed is" + String.valueOf(getTotalAmount()) + "\n";
-        result += "You earned" + String.valueOf(getTotalFrequentRenterPoints()) + " frequent renter points";
-        return result;
+       return new TxtStatement().getResult(this);
     }
 
     public String htmlStatement() {
-        Enumeration rentals = this.rentals.elements();
-        String result = "<H1>Rentals for <EM>" + getName() + "</EM></H1><P>\n";
-        while (rentals.hasMoreElements()) {
-            Rental each = (Rental) rentals.nextElement();
-            result += each.getMovie().getTitle() + ": " + String.valueOf(each.getThisAmount()) + "<BR>\n";
-        }
-        //add footer lines
-        result += "<P>You owe<EM>" + String.valueOf(getTotalAmount()) + "</EM><P>\n";
-        result += "On this rental you earned <EM>" + String.valueOf(getTotalFrequentRenterPoints()) +
-                "</EM> frequent renter points<P>";
-        return result;
+       return new HtmlStatement().getResult(this);
     }
     double getTotalAmount() {
         double result = 0;
@@ -54,6 +35,9 @@ public class Customer {
         }
         return result;
     }
+
+
+
     int getTotalFrequentRenterPoints() {
         int result = 0;
         Enumeration rentals = this.rentals.elements();
@@ -64,6 +48,11 @@ public class Customer {
         return result;
 
     }
+    public Vector getRentals() {
+        return rentals;
+    }
 
-
+    public void setRentals(Vector rentals) {
+        this.rentals = rentals;
+    }
 }
