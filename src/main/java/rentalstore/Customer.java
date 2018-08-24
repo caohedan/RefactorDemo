@@ -51,4 +51,8 @@ public class Customer {
         return result;
 
     }
+
+    public String htmlStatement() {
+        return "";
+    }
 }
