@@ -26,28 +26,7 @@ public class Customer {
     public String htmlStatement() {
        return new HtmlStatement().getResult(this);
     }
-    double getTotalAmount() {
-        double result = 0;
-        Enumeration rentals = this.rentals.elements();
-        while (rentals.hasMoreElements()) {
-            Rental each = (Rental) rentals.nextElement();
-            result += each.getThisAmount();
-        }
-        return result;
-    }
 
-
-
-    int getTotalFrequentRenterPoints() {
-        int result = 0;
-        Enumeration rentals = this.rentals.elements();
-        while (rentals.hasMoreElements()) {
-            Rental each = (Rental) rentals.nextElement();
-            result += each.getFrequentRenterPoints();
-        }
-        return result;
-
-    }
     public Vector getRentals() {
         return rentals;
     }
